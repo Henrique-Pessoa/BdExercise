@@ -1,0 +1,28 @@
+-- a) select count(idCLIENTE) from lcliente;
+-- b) select * from llicenca where month(DtAquisicao) = 7;
+-- c) select * from llicenca where month(DtAquisicao) = "5" and year(DtAquisicao) = "2007";
+-- d) select *, right(DescricaoTipo,5) as x from ltipo_empresa order by idTipo_Empresa asc;
+-- e) select *, right(DescricaoTipo,5) as x from ltipo_empresa order by idTipo_Empresa desc;
+-- f) select *, substring(DescricaoTipo, 6,10) from ltipo_empresa;
+-- g) select Nome_RazaoSocial, char_length(Nome_RazaoSocial) from lcliente order by Nome_RazaoSocial asc ;
+-- h) select NUmLicenca, DtAquisicao, now() as dia de hoje, datediff(now(), DtAquisicao) from llicenca;
+-- i) select upper(NomeSetor), lower(NomeSetor) from Lsetor;
+-- j) select s.*, v.versao from lsoftware s join lversao v on s.idsoftware = v.idsoftware_fk order by s.nomesoftware desc;
+-- k)select nome_razaoSocial,NomeSetor,DescricaoTipo from Lcliente join Ltipo_empresa on  idCliente = idTipo_Empresa join lsetor  on  idCliente = idSetor ;
+-- l)select idCliente, Nome_RazaoSocial, Numlicenca,DtAquisicao,ValorAquisicao from lcliente join LLicenca on idCliente = Numlicenca  ;
+-- m) select nome_razaoSocial, NomeSoftware from lcliente join lsoftware on idCliente = idSoftware order by nome_razaoSocial,NomeSoftware asc;
+-- n) select nome_razaoSocial,NomeSetor, UF from Lcliente join Lsetor on idCliente = idSetor where UF = "SP" or UF = "RS" OR UF ="OR" OR UF = "MG" ; 
+-- o) select nome_razaoSocial,NomeSoftware,Versao,DescricaoTipo,NomeSetor,NumLicenca,DtAquisicao,ValorAquisicao from Lcliente  join Lsoftware on idCliente = idSOFTWARE join llicenca on idCliente = idCLIENTE_FK join Ltipo_empresa on idCliente = idTIpo_Empresa join Lversao on idCliente = idSOFTWARE_FK join Lsetor on idCliente = idSetor;
+-- p) select count(NumLicenca) from llicenca;
+-- q) select max(ValorAquisicao), min(ValorAquisicao),sum(ValorAquisicao),avg(ValorAquisicao)  from llicenca;
+-- r) select count(idCLiente) from lcliente join lsetor on idCliente = idSETOR where NomeSetor = "farmacêutica";
+-- s) select nome_razaoSocial, count(NumLicenca) from lcliente join llicenca on idCLIENTE = idCliente_FK group by(nome_razaoSocial); 
+------------------------------------------------------------------------------------------------------------------------------------
+-- A) select * from employees e join customers c on e.employeeNumber = c.salesRepemployeenumber;
+-- B) select c.customerNumber, c.customerName, sum(o.customerNumber) from customers c join orders o on c.customerNumber = o.customerNumber group by c.customerNumber;
+-- C) select c.customerNumber, c.customerName, avg(o.customerNumber) from customers c join orders o on c.customerNumber = o.customerNumber group by c.customerNumber;
+-- D) select o.officeCode, o.addressLine1 , count(e.employeeNumber) from offices o join employees e on o.officeCode = e.officeCode group by o.officeCode;
+-- E) select e.employeeNumber, e.firstname,e.lastname, count(o.customerNumber) as 'vendas' from employees e join customers c on e.employeenumber = c.salesrepemployeenumber join orders o on c.customernumber = o.customernumber group by e.employeeNumber;
+-- F) select p.productcode, p.productname, count(od.productCode) as qnt from products p join orderdetails od on p.productcode = od.productcode group by od.productCode order by count(od.productCode) desc LIMIT 5;
+-- G) select * from (select p.productcode, p.productname, count(od.productCode) as qnt from products p join orderdetails od on p.productcode = od.productcode group by od.productCode order by count(od.productCode) desc)d where d.qnt > 28;
+-- H) select * from employees where employeeNumber NOT IN (select e.employeeNumber from employees e join customers c on e.employeeNumber = c.salesrepemployeeNumber join orders o on c.customernumber = o.customernumber);
