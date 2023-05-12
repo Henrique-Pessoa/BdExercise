@@ -18,6 +18,7 @@
 -- r) select count(idCLiente) from lcliente join lsetor on idCliente = idSETOR where NomeSetor = "farmacêutica";
 -- s) select nome_razaoSocial, count(NumLicenca) from lcliente join llicenca on idCLIENTE = idCliente_FK group by(nome_razaoSocial); 
 ------------------------------------------------------------------------------------------------------------------------------------
+
 -- A) select * from employees e join customers c on e.employeeNumber = c.salesRepemployeenumber;
 -- B) select c.customerNumber, c.customerName, sum(o.customerNumber) from customers c join orders o on c.customerNumber = o.customerNumber group by c.customerNumber;
 -- C) select c.customerNumber, c.customerName, avg(o.customerNumber) from customers c join orders o on c.customerNumber = o.customerNumber group by c.customerNumber;
